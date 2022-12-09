@@ -1,4 +1,4 @@
-package com.example.schooldb.presentation
+package com.example.schooldb.presentation.login
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -17,13 +17,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.schooldb.presentation.navigation.Navigator
+import com.example.schooldb.presentation.navigation.destinations.login.HomeDestination
 import com.example.schooldb.presentation.utils.validatePassword
 import com.example.schooldb.presentation.utils.validatePhoneOrEmail
 import com.example.schooldb.ui.components.InputTextField
 import com.example.schooldb.ui.theme.SchoolDBTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    viewModel: LoginViewModel = koinViewModel()
+){
+    LoginScreenContent(viewModel)
+}
+
+@Composable
+private fun LoginScreenContent(
+    navigator: Navigator
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -76,7 +88,7 @@ fun LoginScreen() {
 
             Button(onClick = {
                 if (isInputValid) {
-                    //nextScreen
+                    navigator.navigate(HomeDestination.route())
                 } else {
                     Toast.makeText(context, "Invalid Input", Toast.LENGTH_SHORT).show()
                 }

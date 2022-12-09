@@ -8,12 +8,23 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.schooldb.presentation.LoginScreen
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.example.schooldb.presentation.navigation.Navigator
+import com.example.schooldb.presentation.navigation.NavigatorEvent
+import com.example.schooldb.presentation.navigation.destinations.addComposableDestinations
+import com.example.schooldb.presentation.navigation.destinations.login.LoginDestination
 import com.example.schooldb.ui.theme.SchoolDBTheme
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
+
+    private val navigator: Navigator by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -23,7 +34,41 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginScreen()
+                    BlogNavHost(navigator = navigator)
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun BlogNavHost(navigator: Navigator) {
+        val navController = rememberNavController()
+
+        HandleNavigatorEvents(navController, navigator)
+
+        NavHost(navController = navController, startDestination = LoginDestination.route()) {
+            addComposableDestinations(navController)
+        }
+    }
+
+    @Composable
+    private fun HandleNavigatorEvents(
+        navController: NavHostController,
+        navigator: Navigator
+    ) {
+        LaunchedEffect(navController) {
+            navigator.destinations.collect {
+                when (val event = it) {
+                    is NavigatorEvent.NavigateUp -> {
+                        navController.navigateUp()
+                    }
+                    is NavigatorEvent.Directions -> navController.navigate(
+                        event.destination,
+                        event.builder
+                    )
+                    NavigatorEvent.PopBackStack -> {
+                        navController.popBackStack()
+                    }
                 }
             }
         }
