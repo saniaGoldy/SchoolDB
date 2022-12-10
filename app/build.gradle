@@ -15,7 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.schooldb.KoinTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }
@@ -41,9 +41,7 @@ android {
         kotlinCompilerExtensionVersion '1.1.1'
     }
     packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
+        resources.excludes.add("META-INF/*")
     }
 }
 
@@ -78,14 +76,28 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
     // Koin
-    def koin_android_version= "3.3.0"
+    def koin_android_version = "3.3.0"
 
     // Koin main features for Android
     implementation "io.insert-koin:koin-android:$koin_android_version"
     // Navigation Graph
     implementation "io.insert-koin:koin-androidx-navigation:$koin_android_version"
 
-    def koin_android_compose_version= "3.3.0"
+    def koin_version = "3.2.2"
+    // Koin Core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin Test features
+    androidTestImplementation "io.insert-koin:koin-test:$koin_version"
+    // Koin for JUnit 4
+    androidTestImplementation "io.insert-koin:koin-test-junit4:$koin_version"
+    // Koin for JUnit 5
+    androidTestImplementation "io.insert-koin:koin-test-junit5:$koin_version"
+
+    def koin_android_compose_version = "3.3.0"
     // Jetpack Compose
     implementation "io.insert-koin:koin-androidx-compose:$koin_android_compose_version"
+
+    //Google Truth
+    testImplementation "com.google.truth:truth:1.0.1"
+    androidTestImplementation "com.google.truth:truth:1.0.1"
 }
