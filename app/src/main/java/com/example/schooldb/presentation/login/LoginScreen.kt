@@ -88,7 +88,7 @@ private fun LoginScreenContent(
 
             Button(onClick = {
                 if (isInputValid) {
-                    navigator.navigate(HomeDestination.route())
+                    navigator.navigate(HomeDestination.createHomeRoute(login))
                 } else {
                     Toast.makeText(context, "Invalid Input", Toast.LENGTH_SHORT).show()
                 }
