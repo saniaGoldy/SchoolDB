@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Director(
+data class Teacher(
     @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = "director_login") val directorLogin: String,
-    val password: String,
+    @ColumnInfo(name = "teacher_login") val teacherLogin: String,
+    val password:String,
     val name: String
 )
