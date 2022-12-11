@@ -4,9 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.schooldb.data.localDB.entities.Director
+import com.example.schooldb.data.localDB.entities.*
 
-@Database(entities = [Director::class], version = 2)
+@Database(
+    entities = [
+        Director::class,
+        Discipline::class,
+        Teacher::class,
+        Student::class,
+        Journal::class,
+        Lesson::class,
+        SchoolClass::class
+               ],
+    version = 4
+)
 abstract class SchoolDatabase : RoomDatabase() {
     abstract val schoolDao: SchoolDao
 

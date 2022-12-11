@@ -9,6 +9,5 @@ import androidx.room.PrimaryKey
 data class SchoolClass(
     @PrimaryKey
     @ColumnInfo(name = "school_class_id") val schoolClassId: Int,
-    val name: String,
-    val students: String
+    val name: String
 )

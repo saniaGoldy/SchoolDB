@@ -9,5 +9,6 @@ data class Teacher(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "teacher_login") val teacherLogin: String,
     val password:String,
-    val name: String
+    val name: String,
+    @ColumnInfo(name = "discipline_id") val disciplineId: Int
 )
