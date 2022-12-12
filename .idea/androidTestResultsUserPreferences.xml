@@ -23,6 +23,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+                  <entry key="OPPO" value="120" />
                   <entry key="OPPO&#10; CPH1931" value="120" />
                   <entry key="Pixel_4_API_29" value="120" />
                   <entry key="Tests" value="360" />

@@ -1,4 +1,4 @@
-package com.example.schooldb.presentation
+package com.example.schooldb.presentation.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Text

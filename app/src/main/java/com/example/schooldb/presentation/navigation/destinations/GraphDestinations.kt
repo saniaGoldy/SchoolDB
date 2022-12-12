@@ -5,7 +5,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.example.schooldb.presentation.HomeScreen
+import com.example.schooldb.presentation.home.HomeScreen
 import com.example.schooldb.presentation.login.LoginScreen
 import com.example.schooldb.presentation.navigation.destinations.login.HomeDestination
 import com.example.schooldb.presentation.navigation.destinations.login.LoginDestination

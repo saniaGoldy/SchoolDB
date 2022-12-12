@@ -7,6 +7,4 @@ import com.example.schooldb.presentation.navigation.Navigator
 class HomeViewModel(
 private val navigator: Navigator,
 private val repository: SchoolRepository
-) : ViewModel(), Navigator by navigator{
-    
-}
+) : ViewModel(), Navigator by navigator

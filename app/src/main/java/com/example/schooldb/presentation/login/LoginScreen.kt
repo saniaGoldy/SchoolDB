@@ -104,7 +104,7 @@ private fun LoginScreenContent(
 @Preview
 @Composable
 fun LoginScreenPreview() {
-    SchoolDBTheme() {
+    SchoolDBTheme {
         LoginScreen()
     }
 }
